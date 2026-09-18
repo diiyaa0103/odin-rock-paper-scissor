@@ -1,0 +1,83 @@
+<script>
+    function getComputerChoice()
+    {
+        let x=Math.floor(Math.random()*3)
+        if(x==0)
+        {
+            return "Rock"
+        }
+        else if(x==1)
+        {
+            return "Paper"
+        }
+        else{
+            return "Scissors"
+        }
+    }
+
+    function getHumanChoice()
+    {
+        let userChoice=prompt("Choose between Rock,Paper and Scissors")
+        return userChoice
+       
+    }
+
+    let humanScore=0
+    let computerScore=0
+    function playRound(userChoice,compChoice)
+    {
+         if((userChoice=="Rock" && compChoice=="Scissors") || (userChoice=="Scissors" && compChoice=="Paper") || (userChoice=="Paper" && compChoice=="Rock"))
+    {
+        return "win"
+    }
+    else if(userChoice===compChoice)
+    {
+        return "tie"
+    }
+    else
+    {
+        return "lose"
+    }
+
+    }
+
+    function playGame()
+    {
+        let i=1
+        while(i<=5)
+    {
+         const humanSelection=getHumanChoice()
+         const computerSelection=getComputerChoice()
+         const result=playRound(humanSelection,computerSelection)
+         console.log("Round "+i+" User Choice: "+humanSelection+" Computer Choice: "+computerSelection)
+          console.log("Result: " + result);
+
+        if(result=="win")
+    {
+        humanScore++
+    }
+    else if(result=="lose")
+    {
+        computerScore++;
+    }
+    i++
+}
+
+console.log("Human Score: " + humanScore);
+console.log("Computer Score: " + computerScore);
+    if(humanScore>computerScore)
+    {
+        console.log("Human Wins!!")
+    }
+    else if(computerScore>humanScore)
+    {
+        console.log("Computer Wins")
+    }
+    else
+    {
+        console.log("Its a tie!")
+    }
+    }
+
+    playGame()
+</script>
